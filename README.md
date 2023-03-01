@@ -1,2 +1,2 @@
-# Logbook
-A log Indexer, Analyser and Reporter like: https://news.ycombinator.com/item?id=22649690
+# ConnectPay
+A Middleware to connect PayTrack to your application's checkout
