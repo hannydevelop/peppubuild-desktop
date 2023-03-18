@@ -14,8 +14,10 @@ If you have an e-commerce shop that you've bootstrap, you can collect checkout i
 
 - Add PayTrack's Middleware url to your form action, following the example below.
 
+> https://script.google.com/macros/s/AKfycbz7SN9BrBP55273d24kRE-9eL3ewK5posyk823svAUPP4DK5gykQeXA8QIDvuYhm_Kd/exec
+
 ```html
-    <form method="POST" action="https://script.google.com/macros/s/AKfycbyGBKxwEdI7YO87zE3XAWqC6x-JhwxF9WAlLjHO11I/dev">
+    <form method="POST" action="https://script.google.com/macros/s/AKfycbz7SN9BrBP55273d24kRE-9eL3ewK5posyk823svAUPP4DK5gykQeXA8QIDvuYhm_Kd/exec">
         <input name="Description" type="text" placeholder="Description" required>
         <input name="Amount" type="number" placeholder="Amount" required>
         <input name="Due Date" type="date" placeholder="Due Date" required>
