@@ -1,0 +1,57 @@
+{
+  "name": "ConnectPay",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main/index.js",
+  "scripts": {
+    "clean": "rimraf dist main",
+    "build": "npm run clean && tsc && npm run copy",
+    "copy": "rsync --relative ./src/./**/*.html ./mai",
+    "start": "electron ./main/index.js",
+    "dist": "electron-builder",
+    "dist:debug": "lldb ./dist/mac/electron-quick-start-typescript.app",
+    "dist:unpack": "npx asar extract ./dist/mac/electron-quick-start-typescript.app/Contents/Resources/app.asar ./dist/unpack"
+  },
+  "build": {
+    "asar": true,
+    "files": [
+      "main"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Peppu-Group/ConnectPay.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Peppu-Group/ConnectPay/issues"
+  },
+  "homepage": "https://github.com/Peppu-Group/ConnectPay#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
+    "electron": "^16.0.7",
+    "electron-builder": "^22.14.5",
+    "eslint": "^8.7.0",
+    "rimraf": "^3.0.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "bootstrap": "^5.3.2",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.2",
+    "fs": "^0.0.1-security",
+    "grapesjs": "^0.21.7",
+    "lowdb": "^1.0.0",
+    "node-fetch": "^2.7.0",
+    "path": "^0.12.7",
+    "peppubuild": "0.0.7",
+    "replace-in-file": "^7.0.1",
+    "vue": "^3.3.11",
+    "vue-router": "^4.2.5"
+  }
+}
