@@ -11,10 +11,11 @@ var FileSync = require('lowdb/adapters/FileSync.js')
 var createProject = require('./utils/project.js')
 var path = require('path')
 var grapesjs = require('grapesjs')
-var replaceInFile= require('replace-in-file')
+var replaceInFile = require('replace-in-file')
+var os = require('os');
 
-const CURR_DIR = '/Users/ukpaiugochi'
-console.log(CURR_DIR)
+
+const CURR_DIR = os.homedir();
 const adapter = new FileSync(path.join(CURR_DIR, 'db.json'));
 const db = low(adapter);
 
@@ -34,7 +35,7 @@ async function startServer() {
   // set route for logout
   app.get('/logout', (_req, res) => {
     res.clearCookie('pepputoken')
-    res.send('Cookie have been deleted successfully');
+    res.send(`Cookie have been deleted successfully ${CURR_DIR}`);
   })
 
   // set route for user login
