@@ -4,11 +4,9 @@
   "description": "",
   "main": "main/index.js",
   "scripts": {
-    "clean": "rimraf dist main",
-    "build": "npm run clean && tsc && npm run copy",
-    "copy": "rsync --relative ./src/./**/*.html ./mai",
+    "clean": "rimraf dist",
     "start": "electron ./main/index.js",
-    "dist": "electron-builder",
+    "dist": "npm run clean && electron-builder",
     "dist:debug": "lldb ./dist/mac/electron-quick-start-typescript.app",
     "dist:unpack": "npx asar extract ./dist/mac/electron-quick-start-typescript.app/Contents/Resources/app.asar ./dist/unpack"
   },
@@ -17,7 +15,7 @@
     "files": [
       "main"
     ],
-    "icon": "main/public/icons/icon.icns"
+    "icon": "build/icon.icns"
   },
   "repository": {
     "type": "git",
