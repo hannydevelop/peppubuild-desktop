@@ -1,6 +1,6 @@
 {
-  "name": "ConnectPay",
-  "version": "1.0.0",
+  "name": "peppubuild-desktop",
+  "version": "0.0.0",
   "description": "",
   "main": "main/index.js",
   "scripts": {
@@ -16,7 +16,8 @@
     "asar": true,
     "files": [
       "main"
-    ]
+    ],
+    "icon": "main/public/icons/icon.icns"
   },
   "repository": {
     "type": "git",
