@@ -14,8 +14,7 @@
     "asar": true,
     "files": [
       "main"
-    ],
-    "icon": "build/icon.icns"
+    ]
   },
   "repository": {
     "type": "git",
