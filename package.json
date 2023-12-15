@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "start": "electron ./main/index.js",
-    "dist": "npm run clean && electron-builder",
+    "dist": "electron-builder",
     "dist:debug": "lldb ./dist/mac/electron-quick-start-typescript.app",
     "dist:unpack": "npx asar extract ./dist/mac/electron-quick-start-typescript.app/Contents/Resources/app.asar ./dist/unpack",
     "release": "release-it"
