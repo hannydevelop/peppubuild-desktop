@@ -3,9 +3,13 @@
 exports.__esModule = true;
 var electron_1 = require("electron");
 var path = require("path");
-var server_1 = require("./server");
+var express = require('express');
+// var server_1 = require("./server");
+var server_1 = require("peppubuild");
+
 function createWindow() {
     // Start the express server
+    server_1.app.use(express.static(path.join(__dirname, "public")));
     (0, server_1.startServer)();
     // Create the browser window.
     var mainWindow = new electron_1.BrowserWindow({

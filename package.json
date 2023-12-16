@@ -7,7 +7,6 @@
     "clean": "rimraf dist",
     "start": "electron ./main/index.js",
     "dist": "electron-builder",
-    "dist:debug": "lldb ./dist/mac/electron-quick-start-typescript.app",
     "dist:unpack": "npx asar extract ./dist/mac/electron-quick-start-typescript.app/Contents/Resources/app.asar ./dist/unpack",
     "release": "release-it"
   },
@@ -49,7 +48,7 @@
     "lowdb": "^1.0.0",
     "node-fetch": "^2.7.0",
     "path": "^0.12.7",
-    "peppubuild": "0.0.7",
+    "peppubuild": "0.0.8",
     "replace-in-file": "^7.0.1",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5"
