@@ -12,7 +12,7 @@ We are working on incorporating other Git hosting platflorms.
 
 ## Instructions
 
-First, download the version that suits your [system's operating system](). Now, follow the instruction for the operating system package you installed.
+First, download the version that suits your [system's operating system](https://github.com/hannydevelop/peppubuild-desktop/releases). Now, follow the instruction for the operating system package you installed.
 
 ### Windows
 
