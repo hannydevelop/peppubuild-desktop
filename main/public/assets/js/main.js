@@ -1,17 +1,18 @@
 import { userAuth } from './firebase.js';
 import {
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    updateProfile,
-    signInWithPopup,
-    GoogleAuthProvider,
-    GithubAuthProvider
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider
 } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-auth.js";
 // Create route components
-const Home = {template: `
+const Home = {
+  template: `
 <div id="gjs"></div>
 `,
-mounted() {
+  mounted() {
     // initialize grapesjs
     grapesjs.init({
       container: '#gjs',
@@ -216,7 +217,7 @@ mounted() {
   }
 }
 const Auth = {
-    template: `
+  template: `
     <div class="background">
     <div class="main__container">
       <div class="wrapper">
@@ -291,110 +292,111 @@ const Auth = {
     </div>
   </div>
     `,
-    data() { 
-        return {
-            email: "",
-            password: "",
-            lemail: "",
-            lpassword: "",
-            fname: ""
-        }
-    },
-    methods:{
-        // callActive method to switch to signup or signin form
-    callActive() {
-        const wrapper = document.querySelector('.wrapper');
-        wrapper.classList.toggle('active');
-      },
-      // createuser method to create new user with email and password.
-      createUser() {
-        createUserWithEmailAndPassword(userAuth, this.email, this.password)
-          .then((userCredential) => {
-            // Signed up 
-            const user = userCredential.user;
-            this.callVerify(user.accessToken);
-            // Update user profile with full name immediately
-            updateProfile(userAuth.currentUser, {
-              displayName: this.fname,
-              // photoURL: "https://example.com/jane-q-user/profile.jpg"
-            }).then(() => {
-              // Profile updated!
-              // ...
-            }).catch((error) => {
-              // An error occurred
-              // ...
-            });
-          })
-          // return error as alert
-          .catch((error) => {
-            const errorMessage = error.message;
-            swal("Oops!", `Registration error: ${errorMessage}`, "error");
-          });
-      },
-      // logUser method to sign in already registered user with email and password.
-      logUser() {
-        signInWithEmailAndPassword(userAuth, this.lemail, this.lpassword)
-          .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            this.callVerify(user.accessToken)
-          })
-          .catch((error) => {
-            const errorMessage = error.message;
-            swal("Oops!", `Login error: ${errorMessage}`, "error");
-          });
-      },
-      // providerLogin to perform authentication with Github and Google
-      providerLogin(authProvider, provider) {
-        signInWithPopup(userAuth, provider)
-          .then((result) => {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            const credential = authProvider.credentialFromResult(result);
-            const token = credential.accessToken;
-            // The signed-in user info.
-            const user = result.user;
-            // IdP data available using getAdditionalUserInfo(result)
-            // ...
-            this.callVerify(token)
-          }).catch((error) => {
-            // Handle Errors here.
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // The email of the user's account used.
-            // const email = error.customData.email;
-            // The AuthCredential type that was used.
-            const credential = authProvider.credentialFromError(error);
-            // ...
-            swal("Oops!", `Login error: ${errorMessage}`, "error");
-          });
-      },
-      // Google Authentication
-      googleLogin() {
-        const provider = new GoogleAuthProvider();
-        this.providerLogin(GoogleAuthProvider, provider);
-      },
-      // Github Authentication
-      githubLogin() {
-        const provider = new GithubAuthProvider();
-        this.providerLogin(GithubAuthProvider, provider);
-      },
-      callVerify(token) {
-        fetch(`/login`, {
-          method: "POST", // or 'PUT'
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ token: token })
-        })
-          .then((response) => {
-            window.location.href = "/";
-          }).catch((error) => {
-            swal("Oops!", `Login verification error: ${error}`, "error");
-          })
-      }
+  data() {
+    return {
+      email: "",
+      password: "",
+      lemail: "",
+      lpassword: "",
+      fname: ""
     }
+  },
+  methods: {
+    // callActive method to switch to signup or signin form
+    callActive() {
+      const wrapper = document.querySelector('.wrapper');
+      wrapper.classList.toggle('active');
+    },
+    // createuser method to create new user with email and password.
+    createUser() {
+      createUserWithEmailAndPassword(userAuth, this.email, this.password)
+        .then((userCredential) => {
+          // Signed up 
+          const user = userCredential.user;
+          this.callVerify(user.accessToken);
+          // Update user profile with full name immediately
+          updateProfile(userAuth.currentUser, {
+            displayName: this.fname,
+            // photoURL: "https://example.com/jane-q-user/profile.jpg"
+          }).then(() => {
+            // Profile updated!
+            // ...
+          }).catch((error) => {
+            // An error occurred
+            // ...
+          });
+        })
+        // return error as alert
+        .catch((error) => {
+          const errorMessage = error.message;
+          swal("Oops!", `Registration error: ${errorMessage}`, "error");
+        });
+    },
+    // logUser method to sign in already registered user with email and password.
+    logUser() {
+      signInWithEmailAndPassword(userAuth, this.lemail, this.lpassword)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          this.callVerify(user.accessToken)
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          swal("Oops!", `Login error: ${errorMessage}`, "error");
+        });
+    },
+    // providerLogin to perform authentication with Github and Google
+    providerLogin(authProvider, provider) {
+      signInWithPopup(userAuth, provider)
+        .then((result) => {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          const credential = authProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          // The signed-in user info.
+          const user = result.user;
+          // IdP data available using getAdditionalUserInfo(result)
+          // ...
+          this.callVerify(token)
+        }).catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // The email of the user's account used.
+          // const email = error.customData.email;
+          // The AuthCredential type that was used.
+          const credential = authProvider.credentialFromError(error);
+          // ...
+          swal("Oops!", `Login error: ${errorMessage}`, "error");
+        });
+    },
+    // Google Authentication
+    googleLogin() {
+      const provider = new GoogleAuthProvider();
+      this.providerLogin(GoogleAuthProvider, provider);
+    },
+    // Github Authentication
+    githubLogin() {
+      const provider = new GithubAuthProvider();
+      this.providerLogin(GithubAuthProvider, provider);
+    },
+    callVerify(token) {
+      fetch(`/login`, {
+        method: "POST", // or 'PUT'
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token: token })
+      })
+        .then((response) => {
+          window.location.href = "/";
+        }).catch((error) => {
+          swal("Oops!", `Login verification error: ${error}`, "error");
+        })
+    }
+  }
 }
-const Contact = {template: `
+const Contact = {
+  template: `
 <div class="container">
         <div class="row">
             <h1 class="heading">Contact us</h1>
@@ -429,43 +431,52 @@ const Contact = {template: `
         </form>
     </div>
 `,
-methods: {
+  methods: {
     submitReq() {
-        emailjs.sendForm('service_ye8ngya', 'template_hjuc4sp', this.$refs.form, 'gaqDvZ1uPiEy0Z2CO')
-            .then((result) => {
-                swal("Success!", "Successfully contacted Peppubooks 👌", "success");
-                this.$refs.form.reset();
-            }, (error) => {
-                swal("Oops!", `${error} An error occurred`, "error");
-                this.$refs.form.reset();
-            });
+      emailjs.sendForm('service_ye8ngya', 'template_hjuc4sp', this.$refs.form, 'gaqDvZ1uPiEy0Z2CO')
+        .then((result) => {
+          swal("Success!", "Successfully contacted Peppubooks 👌", "success");
+          this.$refs.form.reset();
+        }, (error) => {
+          swal("Oops!", `${error} An error occurred`, "error");
+          this.$refs.form.reset();
+        });
     }
+  }
 }
+
+// function to retrieve specific cookie.
+function getCookie(name) {
+  let cookie = {};
+  document.cookie.split(';').forEach(function (el) {
+    let split = el.split('=');
+    cookie[split[0].trim()] = split.slice(1).join("=");
+  })
+  return cookie[name];
 }
 
 // Define routes
 const routes = [
-    {path: '/', component: Home},
-    {path: '/auth', component: Auth},
-    {path: '/contact', component: Contact},
+  { path: '/', component: Home, name: 'Home' },
+  { path: '/auth', component: Auth, name: 'Auth' },
+  { path: '/contact', component: Contact, name: 'Contact' },
 ];
 
 
 // create the router instance
 const router = new VueRouter({
-    routes
+  routes
 })
 
-/*
-router.beforeEach((to, from) => {
-    // ...
-    // explicitly return false to cancel the navigation
-    return false
-  })
- */
+// guard routes
+router.beforeEach(async (to, from, next) => {
+  let isAuthenticated = getCookie('pepputoken')
+  if (to.name !== 'Auth' && !isAuthenticated) next({ name: 'Auth' })
+  else next()
+})
 
 // create and mount the vue instance
 
 const app = new Vue({
-    router
+  router
 }).$mount('#app')

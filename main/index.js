@@ -5,7 +5,7 @@ var electron_1 = require("electron");
 var path = require("path");
 var express = require('express');
 // var server_1 = require("./server");
-var server_1 = require("peppubuild");
+var server_1 = require("peppubuild-server");
 
 function createWindow() {
     // Start the express server
@@ -22,7 +22,7 @@ function createWindow() {
     // and load the index of the app.
     mainWindow.loadURL('http://localhost:1404');
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools();
+    mainWindow.webContents.openDevTools();
 }
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
