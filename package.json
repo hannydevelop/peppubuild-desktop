@@ -48,7 +48,7 @@
     "lowdb": "^1.0.0",
     "node-fetch": "^2.7.0",
     "path": "^0.12.7",
-    "peppubuild-server": "0.0.1",
+    "peppubuild-server": "0.0.4",
     "replace-in-file": "^7.0.1",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5"
