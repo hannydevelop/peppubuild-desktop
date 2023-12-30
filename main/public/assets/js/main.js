@@ -16,6 +16,7 @@ const Home = {
     // initialize grapesjs
     grapesjs.init({
       container: '#gjs',
+      height: '100vh',
       showOffsets: true,
       fromElement: true,
       noticeOnUnload: false,

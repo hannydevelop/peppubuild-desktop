@@ -6,11 +6,14 @@ var path = require("path");
 var express = require('express');
 // var server_1 = require("./server");
 var server_1 = require("peppubuild-server");
-
+var checkForUpdates = require('./updater.js')
 function createWindow() {
     // Start the express server
     server_1.app.use(express.static(path.join(__dirname, "public")));
+    server_1.app.use(express.json({limit: '50mb'}));
+    server_1.app.use(express.urlencoded({limit: '50mb'}));
     (0, server_1.startServer)();
+    checkForUpdates.check();
     // Create the browser window.
     var mainWindow = new electron_1.BrowserWindow({
         height: 600,
