@@ -4,8 +4,6 @@ This page holds all information that is needed to setup a desktop application th
 
 ## How to Sync with Github
 
-Peppubuild doesn't collect or store your personal information. You will notice this if you use Vision AI since you need to add your API keys at the begining of each session. While each project contains a `.peppubuild` file that stores snippet of your project so that they can be loaded successfully with Peppubuild, we don't want you to loose your project if you don't have access to your PC. For this, you can store your project on Github so that it is easily accessible from anywhere. Follow the steps below.
-
 !coming soon
 
 We are working on incorporating other Git hosting platflorms.
