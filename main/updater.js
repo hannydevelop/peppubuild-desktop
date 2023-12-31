@@ -54,8 +54,6 @@ function check() {
         return log.info("downloading update");
     });
     autoUpdater.on("update-downloaded", function (_arg4) {
-        if (progressWindow) progressWindow.close();
-
         dialog.showMessageBox({
             type: 'info',
             title: 'Update Ready',
