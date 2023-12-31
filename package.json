@@ -1,6 +1,6 @@
 {
   "name": "peppubuild-desktop",
-  "version": "0.0.4",
+  "version": "0.0.1",
   "description": "",
   "main": "main/index.js",
   "scripts": {
