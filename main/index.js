@@ -6,14 +6,18 @@ var path = require("path");
 var express = require('express');
 // var server_1 = require("./server");
 var server_1 = require("peppubuild-server");
-var checkForUpdates = require('./updater.js')
+var checkForUpdates = require('./updater.js');
+const { autoUpdater } = require("electron-updater");
+
+checkForUpdates.check();
+
 function createWindow() {
     // Start the express server
     server_1.app.use(express.static(path.join(__dirname, "public")));
-    server_1.app.use(express.json({limit: '50mb'}));
-    server_1.app.use(express.urlencoded({limit: '50mb'}));
+    server_1.app.use(express.json({ limit: '50mb' }));
+    server_1.app.use(express.urlencoded({ limit: '50mb' }));
     (0, server_1.startServer)();
-    checkForUpdates.check();
+    // checkForUpdates.check();
     // Create the browser window.
     var mainWindow = new electron_1.BrowserWindow({
         height: 600,
@@ -25,12 +29,13 @@ function createWindow() {
     // and load the index of the app.
     mainWindow.loadURL('http://localhost:1404');
     // Open the DevTools.
-      mainWindow.webContents.openDevTools();
+    // mainWindow.webContents.openDevTools();
 }
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 electron_1.app.on("ready", function () {
+    autoUpdater.checkForUpdates();
     createWindow();
     electron_1.app.on("activate", function () {
         // On macOS it's common to re-create a window in the app when the
