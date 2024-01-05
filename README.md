@@ -1,6 +1,6 @@
 # Peppubuild App
 
-This page holds all information that is needed to setup a desktop application that runs Peppubuild in yur local environment. The goal is to build a self-hosted version of peppubuild that you can use anywhere. We use Google Firebase for authentication so you can access your account anywhere. You can also setup your Github account to store your codes so that they are not lost.
+This page holds all information that is needed to setup a desktop application that runs Peppubuild in your local environment. The goal is to build a self-hosted version of peppubuild that you can use anywhere. We use Google Firebase for authentication so you can access your account anywhere. You can also setup your Github account to store your codes so that they are not lost.
 
 ## How to Sync with Github
 
