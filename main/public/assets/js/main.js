@@ -209,7 +209,7 @@ const Home = {
         ],
       },
       // Add peppu and other plugins.
-      plugins: ['peppu-sidebar', 'peppu-panel', "gjs-blocks-basic", "grapesjs-plugin-forms"],
+      plugins: ['peppu-sidebar', 'peppu-panel', "gjs-blocks-basic", "grapesjs-plugin-forms", 'grapesjs-style-bg'],
       pluginsOpts: {
         'peppu-sidebar': { /* Test here your options  */ },
         'gjs-blocks-basic': { flexGrid: true },
