@@ -14,7 +14,7 @@ const Home = {
 `,
   mounted() {
     // initialize grapesjs
-    grapesjs.init({
+    var editor = grapesjs.init({
       container: '#gjs',
       height: '100vh',
       showOffsets: true,
@@ -209,12 +209,23 @@ const Home = {
         ],
       },
       // Add peppu and other plugins.
-      plugins: ['peppu-sidebar', 'peppu-panel', "gjs-blocks-basic", "grapesjs-plugin-forms", 'grapesjs-style-bg'],
+      plugins: ['peppu-sidebar', 'peppu-bootstrap', 'peppu-panel', "gjs-blocks-basic", "grapesjs-plugin-forms", 'grapesjs-style-bg'],
       pluginsOpts: {
         'peppu-sidebar': { /* Test here your options  */ },
+        'peppu-bootstrap': {},
         'gjs-blocks-basic': { flexGrid: true },
+      },
+      canvas: {
+        styles: [
+        "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        ],
+        scripts: [
+          "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        ],
       }
     });
+    editor.setComponents();
+    editor.setStyle();
   }
 }
 const Auth = {
