@@ -17,6 +17,7 @@ const Home = {
     var editor = grapesjs.init({
       container: '#gjs',
       height: '100vh',
+      width: 'auto',
       showOffsets: true,
       fromElement: true,
       noticeOnUnload: false,
@@ -244,14 +245,11 @@ const Auth = {
               <input id="password-login" type="password" required v-model="lpassword" />
               <label for="">Password</label>
             </div>
-            <div class="remember">
-              <label><input type="checkbox" /> Remember me</label>
-            </div>
             <button type="reset" class="mybtn" @click="logUser()">Login</button>
             <div class="signup-link">
               <p>
                 Don't have an account?
-                <router-link to="#" class="signUpBtn-link" @click="callActive">Sign Up</router-link>
+                <button type="reset" class="signUpBtn" @click="callActive()">Sign Up</button>
               </p>
             </div>
           </form>
@@ -272,15 +270,11 @@ const Auth = {
               <input id="email" type="email" required v-model="email" />
               <label for="">Email</label>
             </div>
-            <div class="remember">
-              <label><input type="checkbox" /> I agree to the terms &
-                conditions</label>
-            </div>
             <button type="reset" class="mybtn" @click="createUser()">Sign Up</button>
             <div class="signup-link">
               <p>
                 Already have an account?
-                <router-link to="#" class="signInBtn-link" @click="callActive">Sign In</router-link>
+                <button type="reset" class="signUpBtn" @click="callActive()">Sign Up</button>
               </p>
             </div>
           </form>
@@ -316,6 +310,7 @@ const Auth = {
   methods: {
     // callActive method to switch to signup or signin form
     callActive() {
+      console.log('we are calling you')
       const wrapper = document.querySelector('.wrapper');
       wrapper.classList.toggle('active');
     },

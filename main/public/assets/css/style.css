@@ -22,7 +22,16 @@ auth starts here
 ################
 */
 .background {
-    padding: 10vh;
+    padding-top: 10vh;
+    padding-left: 3vh;
+    padding-right: 3vh;
+}
+
+.signUpBtn {
+    background: none;
+    font-size: 16px;
+    border: #fff;
+    color: #2dc046;
 }
 
 .logo-img {
@@ -115,6 +124,11 @@ auth starts here
         width: 320px;
         height: 571px;
         padding: 0px 0px 0px 0px;
+    }
+
+    .start {
+        display: block;
+        padding: 50px;
     }
 }
 
@@ -209,20 +223,6 @@ h2 {
     color: #34A853;
 }
 
-.remember {
-    margin: 5px 0 15px 5px;
-
-}
-
-.remember label {
-    color: #000;
-    font-size: 14px;
-}
-
-.remember label input {
-    accent-color: #34A853;
-}
-
 .mybtn {
     position: relative;
     width: 100%;
@@ -267,7 +267,7 @@ h2 {
     height: 42px;
     border-radius: 2px;
     box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .25);
-    margin-left: 20px;
+    margin: 10px;
 }
 
 .google-bk {
